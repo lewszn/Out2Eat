@@ -1,0 +1,42 @@
+<div class="container">
+	<div class="title-box">
+		<h1>Take a Chance!</h1>
+	</div>
+	<div class="jabber-box">
+		<h4>Pick a distance.</h4><h4>Press the button.</h4><h4>Try the Restaurant.</h4>
+	</div>
+	  <form oninput="amount.value=rangeInput.value">
+		<input class="bar" type="range" id="rangeinput" name="rangeInput" min="1" max="25" step= "1" ng-model="home.rangeValue" onchange="rangevalue.value=value"/>
+		<span class="highlight"></span>
+		<output id="rangevalue" ng-model="home.rangeValue">{{home.rangeValue}}</output>
+		<label for="miles-away"><h5>Miles Away:</h5></label>
+		<input class="miles-away" type="text" name="amount" for="rangeInput" ng-model="home.rangeValue"/>
+		<div>
+		<label for="vegetarian-option"><h5>Vegetarian:</h5></label>
+		<input type="checkbox" class="vegetarian-option" ng-model="home.vegetarian">
+		</div>
+		<div class="restaurant animated flipInX" data-ng-repeat="food in home.randomRestaurant">
+			<a href="{{food.url}}" target="_blank">{{food.name}}</a>
+			<img src="{{food.rating_img_url}}" alt="Yelp rating stars">
+			<br>
+			<img src="../Images/powered_by_yelp.png" alt="yelp brand image">
+		</div>	  
+	  </form>
+	  <!--animated cube code below-->
+		<div ng-show="home.loading" class="sk-spinner sk-spinner-cube-grid animated fadeIn">
+			<div class="sk-cube"></div>
+			<div class="sk-cube"></div>
+			<div class="sk-cube"></div>
+			<div class="sk-cube"></div>
+			<div class="sk-cube"></div>
+			<div class="sk-cube"></div>
+			<div class="sk-cube"></div>
+			<div class="sk-cube"></div>
+			<div class="sk-cube"></div>
+		</div>
+		<!--animated cube code above-->
+	<div ng-show="!home.loading" class="button-box animated flipInX">
+		<button ng-click="home.findFood()">{{home.buttonText}}</button>
+	</div>
+	<br >
+</div>

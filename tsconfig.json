@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "preserveConstEnums": true,
+        "removeComments": true,
+        "outDir": ".",
+        "module": "commonjs",
+        "rootDir": ".",
+        "sourceMap": false
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}

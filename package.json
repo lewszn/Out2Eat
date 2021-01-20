@@ -1,0 +1,34 @@
+{
+  "name": "",
+  "license": "ISC",
+  "description": "Your description goes here",
+  "version": "0.1.0",
+  "dependencies": {
+    "express": "^4.13.3",
+    "less": "latest",
+    "oauth-1.0a": "^1.0.1",
+    "request": "^2.65.0",
+    "yelp": "^0.2.0"
+  },
+  "devDependencies": {
+    "watchify": "latest",
+    "typescript": "latest",
+    "nodemon": "latest",
+    "mkdirp": "latest",
+    "tsconfig-glob": "latest",
+    "browserify": "latest",
+    "stringify": "latest",
+    "http-server": "latest"
+  },
+  "scripts": {
+    "build": "npm run less && npm run ts && npm run tsd",
+    "less": "lessc app/styles/main.less > app/styles/main.css",
+    "watch:less": "nodemon -w . -e less -x npm run less",
+    "watch": "npm run watch:less & npm run watch:typescript",
+    "ts": "npm run tsc:init && tsc -p .",
+    "tsc:init": "tsc --init -t 'ES5' --preserveConstEnums --removeComments -w  --noImplicitAny --outDir '.'",
+    "watch:typescript": "npm run ts -- -w",
+    "tsd": "tsd update -so && tsd link",
+    "start": "node ./node_modules/http-server/bin/http-server app"
+  }
+}
